@@ -23,7 +23,8 @@ public class questionsPanelTests {
     private int index;
 
     public questionsPanelTests(int index, String expectedResult){
-        System.setProperty("webdriver.chrome.driver","C:\\WebDriver\\bin2\\chromedriver.exe");
+
+        System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
 
         this.index = index;
         this.expectedResult = expectedResult;

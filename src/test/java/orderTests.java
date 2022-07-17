@@ -52,8 +52,8 @@ public class orderTests {
 
     @Parameterized.Parameters
     public static Object[][] getData() {
-        System.setProperty("webdriver.chrome.driver","C:\\WebDriver\\bin2\\chromedriver.exe");
-        System.setProperty("webdriver.gecko.driver","C:\\WebDriver\\FireFox\\geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver","src/main/resources/geckodriver.exe");
         //без этого у меня не работает, хотя эти строки добавлены в PATH
 
         return new Object[][]
