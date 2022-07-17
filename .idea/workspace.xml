@@ -18,6 +18,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubPullRequestsUISettings">
@@ -47,7 +52,7 @@
     "settings.editor.selected.configurable": "configurable.group.build"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.orderTests.questionsPanelTextCorrectTest">
+  <component name="RunManager" selected="JUnit.questionsPanelTests.questionsPanelTextCorrectTest">
     <configuration name="orderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sprint_4" />
       <option name="PACKAGE_NAME" value="" />
@@ -89,8 +94,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.orderTests.questionsPanelTextCorrectTest" />
         <item itemvalue="JUnit.questionsPanelTests.questionsPanelTextCorrectTest" />
+        <item itemvalue="JUnit.orderTests.questionsPanelTextCorrectTest" />
         <item itemvalue="JUnit.orderTests" />
         <item itemvalue="JUnit.questionsPanelTests.questionsPanelTest" />
       </list>

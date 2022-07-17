@@ -1,4 +1,3 @@
-import com.sun.jdi.PrimitiveValue;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,23 +5,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObject.MainPage;
 
-import java.lang.ref.PhantomReference;
 @RunWith(Parameterized.class)
 public class questionsPanelTests {
 
 
+    private final String URL = "https://qa-scooter.praktikum-services.ru/";
     private WebDriver driver;
     private MainPage mainPage;
     private ChromeOptions options;
-    private String expectedResult;
+    private final String expectedResult;
     private int index;
 
     public questionsPanelTests(int index, String expectedResult){
@@ -51,7 +48,7 @@ public class questionsPanelTests {
         options = new ChromeOptions(); // Драйвер для браузера Chrome
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(URL);
     }
 
     @Test
@@ -62,6 +59,7 @@ public class questionsPanelTests {
                 .until(ExpectedConditions.visibilityOf(driver.findElement(mainPage.acceptCookieButton)));
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.elementToBeClickable(mainPage.acceptCookieButton));
+        mainPage.scrollToAccordion();
         mainPage.setAcceptCookieButtonClick();
         mainPage.qeustionAccordeonButtonClick(index);
         String actualResult = mainPage.getAnswerPanelText(index);

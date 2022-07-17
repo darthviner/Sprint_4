@@ -55,9 +55,11 @@ public class OrderPage {
     }
 
     public  void buttonClick(String buttonName){
+
         driver.findElement(button(buttonName)).click();
     }
     public void checkboxClick(String checkboxName){
+
         driver.findElement(checkBoxInput(checkboxName)).click();
     }
     public void dropdownInputClick(String inputName){
@@ -68,6 +70,7 @@ public class OrderPage {
                 .click();
     }
     public void selectedSearchInputClick(String inputName){
+
         driver.findElement(selectedSearchInput(inputName));
     }
 
@@ -85,7 +88,9 @@ public class OrderPage {
     public void setDropdownValue(String inputName, String value){
         dropdownInputClick(inputName);
         new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.visibilityOf(driver.findElement(dropdownValue(value)))).click();
+                .until(ExpectedConditions.visibilityOf
+                        (driver.findElement(dropdownValue(value))))
+                .click();
     }
 
     public void setTextToInput(String inputName, String text){

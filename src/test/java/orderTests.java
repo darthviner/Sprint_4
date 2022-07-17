@@ -20,17 +20,17 @@ import pageObject.TrackPage;
 public class orderTests {
 
 
-    private WebDriver driver;
-    private MainPage mainPage;
-    private String name;
-    private String surname;
-    private String address;
-    private String phoneNumber;
-    private String metroStation;
-    private String date;
-    private String rentDuration;
-    private String colour;
-    private String comment;
+    private final String URL = "https://qa-scooter.praktikum-services.ru/";
+    private final WebDriver driver;
+    private final String name;
+    private final String surname;
+    private final String address;
+    private final String phoneNumber;
+    private final String metroStation;
+    private final String date;
+    private final String rentDuration;
+    private final String colour;
+    private final String comment;
 
 
     public orderTests(String name, String surname, String address, String phoneNumber, String metroStation, String date, String rentDuration, String colour, String comment, WebDriver driver){
@@ -46,30 +46,34 @@ public class orderTests {
         this.comment = comment;
         this.driver = driver;
 
+
     }
 
 
-    @Parameterized.Parameters // Пометь метод аннотацией для параметров
+    @Parameterized.Parameters
     public static Object[][] getData() {
         System.setProperty("webdriver.chrome.driver","C:\\WebDriver\\bin2\\chromedriver.exe");
         System.setProperty("webdriver.gecko.driver","C:\\WebDriver\\FireFox\\geckodriver.exe");
+        //без этого у меня не работает, хотя эти строки добавлены в PATH
 
         return new Object[][]
                 {
                         {"Данил","Володиньш","Москва","82283591488","Черкизовская","13.07.2022","двое суток","чёрный жемчуг","Комментарий", new FirefoxDriver()}
                         ,{"Сергей","Шарапов","Владивосток","89992223311","Китай-город","14.07.2022","сутки","серая безысходность","Комментарий", new ChromeDriver()}
                 };
+        //было бы круто реализовать что то вроде Map<String,String>, где ключ - название инпута (текст из плэйсхолдера)
+        //а значение - значение которое нужно вставить в соответствующий инпут, но я не успел
     }
 
     @Before
     public void startup(){
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(URL);
     }
 
     @Test
     public void questionsPanelTextCorrectTest(){
 
-        mainPage = new MainPage(driver);
+        MainPage mainPage = new MainPage(driver);
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOf(driver.findElement(mainPage.acceptCookieButton)));
         new WebDriverWait(driver, 10)
@@ -132,6 +136,7 @@ public class orderTests {
         Assert.assertEquals("Проверка имени",name,actualName);
         Assert.assertEquals("Проверка фамилии",surname,actualSurname);
         Assert.assertEquals("Проверка адреса",address,actualAddress);
+        //здесь должна быть проверка даты, но для этого нужно уметь в приведение дат и в работу с датами впринципе, но нас не учили, а сам не успел
         Assert.assertEquals("Проверка станции метро", metroStation,actualMetroStation);
         Assert.assertEquals("Проверка телефона",phoneNumber,actualPhoneNumber);
         Assert.assertEquals("Проверка длительности аренды",rentDuration,actualRentDuration);
@@ -143,7 +148,6 @@ public class orderTests {
     @After
     public void teardown(){
         driver.quit();
-
     }
 
 

@@ -1,7 +1,9 @@
 package pageObject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.nio.file.WatchEvent;
 
@@ -29,6 +31,11 @@ public class MainPage {
     }
 
 
+    public MainPage scrollToAccordion() {
+        WebElement element = driver.findElement(By.className("Home_FAQ__3uVm4"));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        return this;
+    }
 
     public By answerPanel(int index){
 
